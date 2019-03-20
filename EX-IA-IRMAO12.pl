@@ -56,6 +56,8 @@ irmao_mae(NOME_FILHO1, NOME_FILHO2, NOME_MAE) :-
 %casal(NOME_FILHO1, NOME_MAE, NOME_PAI)
 
 casal(NOME_FILHO1, NOME_MAE, NOME_PAI) :-
+	homem(NOME_PAI),
+	mulher(NOME_MAE),
     pai(NOME_FILHO1, NOME_PAI),
     mae(NOME_FILHO1, NOME_MAE).
 
