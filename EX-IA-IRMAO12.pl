@@ -54,11 +54,11 @@ irmaos_casal(FILHO, FILHO2, PAI, MAE) :- irmaos_pai(FILHO, FILHO2, PAI),
 
 filho_unico_pai(FILHO, PAI) :- homem(FILHO),
                                pai(FILHO, PAI),
-                               not(irmaos_pai(FILHO, FILHO2, PAI)).
+                               not(irmaos_pai(FILHO, FILHO2, PAI)). %Não entendi esse FILHO2%
 
 filho_unico_mae(FILHO, MAE) :- homem(FILHO),
                                mae(FILHO, MAE),
-                               not(irmaos_mae(FILHO, FILHO2, MAE)).
+                               not(irmaos_mae(FILHO, FILHO2, MAE)). %Não entendi esse FILHO2 também%
 
 filho_unico(FILHO, PROGENITOR) :- homem(FILHO),
                                   filho_unico_pai(FILHO, PROGENITOR);
