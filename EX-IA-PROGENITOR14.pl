@@ -1,24 +1,21 @@
-%BC : Lista de fatos
+% B.C - Base de conhecimentos
 
-%pai(NOME_FILHO, NOME_PAI)
-
+% pai(FILHO, PROGENITOR)
 pai(isabel,joao).
-pai(jose,pedro).
 pai(pedro,joao).
 pai(xico,pedro).
-pai(zeca,xico).
-pai(lico, xico).
 pai(carlos,zeca).
+pai(jose,pedro).
+pai(xico_jr,xico).
+pai(zeca,xico).
 
-%neto(NOME_NETO, NOME_PAI, NOME_VO)
+% Regras
+% neto(NETO, PAI, VO).
+neto(NETO, PAI, VO) :- pai(PAI, VO),
+                       pai(NETO, PAI).
 
-neto(NOME_NETO, NOME_PAI, NOME_VO) :-
-    pai(NOME_NETO, NOME_PAI),
-    pai(NOME_PAI, NOME_VO).
+% bisneto(BISNETO, PAI, VO, BISAVO).
+bisneto(BISNETO, PAI, VO, BISAVO) :- pai(VO, BISAVO),
+                                   pai(PAI, VO),
+                                   pai(BISNETO, PAI).
 
-%bisneto(NOME_BISNETO, NOME_NETO, NOME_PAI, NOME_VO)
-
-bisneto(NOME_BISNETO, NOME_PAI, NOME_VO, NOME_BISAVO) :-
-    pai(NOME_BISNETO, NOME_PAI),
-    pai(NOME_PAI, NOME_VO),
-    pai(NOME_VO, NOME_BISAVO).

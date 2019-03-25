@@ -1,16 +1,18 @@
-%BC : Lista de fatos
-%fica_em(CIDADE, PAIS)
-
-fica_em(sao-paulo, brasil).
+% B.C - banco de conhecimentos
+% fica_em(CIDADE,PAIS).
+fica_em(sao-paulo,brasil).
 fica_em(paris,franca).
+fica_em(grenoble,franca).
+fica_em(toquio,japao).
+fica_em(california,usa).
 
+% nasceu_em(PESSOA,CIDADE).
+nasceu_em(joao,sao-paulo).
+nasceu_em(jean,paris).
+nasceu_em(louis,grenoble).
+nasceu_em(john,california).
+nasceu_em(takashi,toquio).
 
-%nasceu_em(PESSOA, CIDADE)
-nasceu_em(joao, sao-paulo).
-nasceu_em(jean, paris).
-
-
-%M.I: Regras
-
-patria_de(PESSOA,PAIS):- fica_em(CID, PAIS),
-                         nasceu_em(PESSOA, CID).
+% M.I: Regras
+patria_de(PESSOA, PAIS) :-  nasceu_em(PESSOA, CIDADE),
+                            fica_em(CIDADE, PAIS).
