@@ -72,10 +72,31 @@ irmao_casal(NOME_FILHO1, NOME_FILHO2, NOME_MAE, NOME_PAI) :-
     NOME_FILHO1 \= NOME_FILHO2,
     NOME_FILHO2 \= NOME_FILHO1.
 
+%filho_unico_pai(FILHO, PAI)
+filho_unico_pai(FILHO, PAI) :-
+    homem(FILHO),
+    pai(FILHO, PAI),
+    not(irmao_pai(FILHO, _NOME_FILHO2, PAI)).
 
-%filho_unico(NOME_FILHO1, NOME_PAI, NOME_MAE)
+%filho_unico_mae(FILHO, MAE)
+filho_unico_mae(FILHO, MAE) :-
+    homem(FILHO),
+    mae(FILHO, MAE),
+    not(irmao_mae(FILHO, _NOME_FILHO2, MAE)).
 
-filho_unico(NOME_FILHO1, NOME_PAI, NOME_MAE) :-
+
+%filho_unico(NOME_FILHO1, NOME_PROGENITOR)
+
+filho_unico(NOME_FILHO1, NOME_PROGENITOR) :-
     homem(NOME_FILHO1),
-    casal(NOME_FILHO1, NOME_MAE, NOME_PAI),
-    NOME_PAI \= NOME_MAE.
+    filho_unico_pai(NOME_FILHO1, NOME_PROGENITOR);
+    filho_unico_mae(NOME_FILHO1, NOME_PROGENITOR).
+
+
+%filho_unico_casal(NOME_FILHO1, NOME_PAI, NOME_MAE)
+
+filho_unico_casal(NOME_FILHO1, NOME_MAE, NOME_PAI) :-
+    homem(NOME_FILHO1),
+    filho_unico_mae(NOME_FILHO1, NOME_MAE),
+    filho_unico_pai(NOME_FILHO1, NOME_PAI).
+
